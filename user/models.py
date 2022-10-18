@@ -6,5 +6,5 @@ from django.contrib.auth.models import AbstractUser
 class User(AbstractUser):
     class Meta:
         db_table = 'my_user_model'
-    image = models.ImageField(upload_to='images/', blank=True, null=True)
+    image = models.ImageField(upload_to='', blank=True, null=True)
 

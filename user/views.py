@@ -3,6 +3,7 @@ from django.shortcuts import redirect, render
 from .models import User
 from django.contrib.auth import authenticate, login as loginsession
 from .forms import FileUploadForm
+from a4_machine.machine import find_something
 
 # Create your views here.
 
@@ -36,31 +37,28 @@ def login(request):
             return HttpResponse('로그인 실패')
 
 def main(request):
-    if request.method =='GET':
-        user = request.user.is_authenticated
-        if user:
-            return render(request, 'main.html')
-        else:
-            return redirect('/login')
     if request.method == 'POST':
-        
         user = request.user
         img = request.FILES.get('image')
-        
         user.image = img
         user.save()
-        
-        return redirect('/fileupload/')
-    
+        return redirect('/fileupload')
     else:
         fileuploadForm = FileUploadForm
         context = {
             'fileuploadForm': fileuploadForm,
         }
-        return render(request, 'main.html', context)
-     
+        print(request)
+        return render(request, 'user/main.html', context)
 
 def fileupload(request):
     if request.method == "GET":
-        return render(request, 'fileupload.html')
+        print(request)
+        return render(request, 'user/fileupload.html')
 
+def home(request):
+    user = request.user.is_authenticated
+    if user:
+        return render(request, 'user/main.html')
+    else:
+        return redirect('/login')
