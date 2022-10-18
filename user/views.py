@@ -2,7 +2,9 @@ from django.http import HttpResponse
 from django.shortcuts import redirect, render
 from .models import User, Photo
 from django.contrib.auth import authenticate, login as loginsession
-from django.contrib.auth.decorators import login_required
+from .forms import FileUploadForm
+
+# Create your views here.
 
 def signup(request):
     if request.method=='GET':
@@ -32,26 +34,37 @@ def login(request):
             return redirect('/main/')
         else:
             return HttpResponse('로그인 실패')
-        
-        
-@login_required(login_url='/user/login/')
+
 def main(request):
-    if request.method == 'GET':
+    if request.method =='GET':
         return render(request, 'main.html')
 
-    
-def fileupload(request):
     if request.method == 'POST':
-        user = User()
-        user.user = request.user
-        print(request.FILES["imgs"])
         
-        for img in request.FILES.getlist('imgs'):
-            photo = Photo()
-            photo.user = user
-            photo.image = img
-            photo.save()
-        return render(request, 'fileupload.html')
+        user = request.user
+        #img = request.FILES["image"]
+        print(request.FILES)
+        img = request.FILES.get('image')
+        
+        user.image = img
+        user.save()
+        
+        return redirect('/test')
+        '''
+        p = User()
+        p = request.FILES.get('image')
+        p.save()
+        '''
 
-    
-        
+    else:
+        fileuploadForm = FileUploadForm
+        context = {
+            'fileuploadForm': fileuploadForm,
+        }
+        return render(request, 'main.html', context)
+     
+
+
+def test(request):
+    if request.method == "GET":
+        return render(request, 'test.html')
