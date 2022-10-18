@@ -19,6 +19,8 @@ from . import views
 from django.conf.urls.static import static
 from django.conf import settings
 
+app_name = 'a4_machine'
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('user/', include('user.urls')),
