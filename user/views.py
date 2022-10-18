@@ -1,6 +1,6 @@
 from django.http import HttpResponse
 from django.shortcuts import redirect, render
-from .models import User, Photo
+from .models import User
 from django.contrib.auth import authenticate, login as loginsession
 from .forms import FileUploadForm
 
@@ -45,20 +45,13 @@ def main(request):
     if request.method == 'POST':
         
         user = request.user
-        #img = request.FILES["image"]
-        print(request.FILES)
         img = request.FILES.get('image')
         
         user.image = img
         user.save()
         
-        return redirect('/test')
-        '''
-        p = User()
-        p = request.FILES.get('image')
-        p.save()
-        '''
-
+        return redirect('/fileupload/')
+    
     else:
         fileuploadForm = FileUploadForm
         context = {
@@ -67,7 +60,7 @@ def main(request):
         return render(request, 'main.html', context)
      
 
-
-def test(request):
+def fileupload(request):
     if request.method == "GET":
-        return render(request, 'user/test.html')
+        return render(request, 'fileupload.html')
+

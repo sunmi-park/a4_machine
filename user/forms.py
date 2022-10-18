@@ -1,7 +1,8 @@
 from django import forms
-from .models import User, Photo
+from .models import User
 
 class FileUploadForm(forms.ModelForm):
     class Meta:
         model = User
-        fields = ['username','image']
+        fields = ['image']
+
