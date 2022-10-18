@@ -15,16 +15,15 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from . import views
-from django.conf.urls.static import static
-from django.conf import settings
-
-app_name = 'a4_machine'
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('user.urls')),
+<<<<<<< HEAD
     path('', views.main, name='main'),
     path('<int:user_id>/fileupload/', views.fileupload, name='fileupload'),
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+=======
+]
+>>>>>>> d6f830cad1275fef56954c8063344d72242d096e

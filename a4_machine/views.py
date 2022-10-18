@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 from django.shortcuts import redirect, render
 from django.contrib.auth.decorators import login_required
 from user.models import User, Photo
@@ -23,3 +24,5 @@ def fileupload(request):
             photo.save()
         return redirect('/test/' + str(user.id))
 
+=======
+>>>>>>> d6f830cad1275fef56954c8063344d72242d096e
