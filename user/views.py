@@ -1,9 +1,8 @@
 from django.http import HttpResponse
 from django.shortcuts import redirect, render
-from .models import User
+from .models import User, Photo
 from django.contrib.auth import authenticate, login as loginsession
-
-# Create your views here.
+from django.contrib.auth.decorators import login_required
 
 def signup(request):
     if request.method=='GET':
@@ -15,7 +14,7 @@ def signup(request):
         passwordcheck = request.POST.get('passwordcheck')
         if password == passwordcheck:
             User.objects.create_user(username=username, password=password, email=email)
-            return redirect('/user/login/')
+            return redirect('/login/')
         else:
             return HttpResponse('비밀번호 틀림')
     else:
@@ -33,4 +32,26 @@ def login(request):
             return redirect('/main/')
         else:
             return HttpResponse('로그인 실패')
+        
+        
+@login_required(login_url='/user/login/')
+def main(request):
+    if request.method == 'GET':
+        return render(request, 'main.html')
+
+    
+def fileupload(request):
+    if request.method == 'POST':
+        user = User()
+        user.user = request.user
+        print(request.FILES["imgs"])
+        
+        for img in request.FILES.getlist('imgs'):
+            photo = Photo()
+            photo.user = user
+            photo.image = img
+            photo.save()
+        return render(request, 'fileupload.html')
+
+    
         

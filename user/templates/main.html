@@ -28,10 +28,10 @@ crossorigin="anonymous"></script>
   </nav>
 
   <!-- 이미지 업로드 -->
-  <form method="POST" action="{% url 'a4_machine:fileupload' %}" enctype="multipart/form-data">
+  <form method="POST" action="{% url 'user:fileupload' %}" enctype="multipart/form-data">
     
     {% csrf_token %}
-    <input type="file" name="imgs" multiple>
+    <input type="file" name="imgs">
     <input type='submit' value="작성하기">
   </form>
 
