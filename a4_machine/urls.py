@@ -25,5 +25,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('user/', include('user.urls')),
     path('main/', views.main, name='main'),
+    path('<int:user_id>/fileupload/', views.fileupload, name='fileupload'),
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
