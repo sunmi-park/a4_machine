@@ -6,13 +6,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+{% block content %}
 <body>
 
-
-    {% for photo in post.photo_set.all %}
-    <img src="{{photo.image.url}}" width="50">
-    {% endfor %}
+    <div class="users_ifm_frame">
+   
+    {% if user.image %}
+    <img src="{{user.image.url}}" >
+    {% endif %}
+  
+    </div>
 
     
 </body>
+{% endblock %}
 </html>

@@ -23,7 +23,7 @@ app_name = 'a4_machine'
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('user/', include('user.urls')),
+    path('', include('user.urls')),
     path('main/', views.main, name='main'),
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

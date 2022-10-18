@@ -1,7 +1,8 @@
 from django.http import HttpResponse
 from django.shortcuts import redirect, render
-from .models import User
+from .models import User, Photo
 from django.contrib.auth import authenticate, login as loginsession
+from .forms import FileUploadForm
 
 # Create your views here.
 
@@ -15,7 +16,7 @@ def signup(request):
         passwordcheck = request.POST.get('passwordcheck')
         if password == passwordcheck:
             User.objects.create_user(username=username, password=password, email=email)
-            return redirect('/user/login/')
+            return redirect('/login/')
         else:
             return HttpResponse('비밀번호 틀림')
     else:
@@ -33,4 +34,37 @@ def login(request):
             return redirect('/main/')
         else:
             return HttpResponse('로그인 실패')
+
+def main(request):
+    if request.method =='GET':
+        return render(request, 'main.html')
+
+    if request.method == 'POST':
         
+        user = request.user
+        #img = request.FILES["image"]
+        print(request.FILES)
+        img = request.FILES.get('image')
+        
+        user.image = img
+        user.save()
+        
+        return redirect('/test')
+        '''
+        p = User()
+        p = request.FILES.get('image')
+        p.save()
+        '''
+
+    else:
+        fileuploadForm = FileUploadForm
+        context = {
+            'fileuploadForm': fileuploadForm,
+        }
+        return render(request, 'main.html', context)
+     
+
+
+def test(request):
+    if request.method == "GET":
+        return render(request, 'test.html')
