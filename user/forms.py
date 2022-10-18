@@ -3,5 +3,5 @@ from .models import User, Photo
 
 class FileUploadForm(forms.ModelForm):
     class Meta:
-        model = Photo
+        model = User
         fields = ['username','image']

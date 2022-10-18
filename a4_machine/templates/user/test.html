@@ -9,7 +9,6 @@
 {% block content %}
 <body>
 
-<<<<<<<< HEAD:user/templates/fileupload.html
     {% for photo in user.photo_set.all %}
     <img src="{{photo.image.url}}" width="50">
     <img src="{photo.image.url}" style="width:100px; height:100px" />
@@ -19,17 +18,13 @@
     </tr>
 
     {% endfor %}
-========
     <div class="users_ifm_frame">
-   
     {% if user.image %}
     <img src="{{user.image.url}}" >
     {% endif %}
-  
     </div>
->>>>>>>> b2e4de3c418af59de5c986fdc70e08e2b10f9231:user/templates/test.html
 
-    
+
 </body>
 {% endblock %}
 </html>

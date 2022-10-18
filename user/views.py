@@ -37,7 +37,11 @@ def login(request):
 
 def main(request):
     if request.method =='GET':
-        return render(request, 'main.html')
+        user = request.user.is_authenticated
+        if user:
+            return render(request, 'main.html')
+        else:
+            return redirect('/login')
     if request.method == 'POST':
         
         user = request.user
@@ -66,4 +70,4 @@ def main(request):
 
 def test(request):
     if request.method == "GET":
-        return render(request, 'test.html')
+        return render(request, 'user/test.html')

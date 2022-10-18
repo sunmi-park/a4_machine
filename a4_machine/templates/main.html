@@ -28,7 +28,7 @@ crossorigin="anonymous"></script>
   </nav>
 
   <!-- 이미지 업로드 -->
-  <form method="POST" action="{% url 'user:fileupload' %}" enctype="multipart/form-data">
+  <form method="POST" action="{% url 'user:main' %}" enctype="multipart/form-data">
 
     {% csrf_token %}
     <input type="file" name="imgs">
