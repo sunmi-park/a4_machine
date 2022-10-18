@@ -8,9 +8,14 @@
 </head>
 <body>
 
-
-    {% for photo in post.photo_set.all %}
+    {% for photo in user.photo_set.all %}
     <img src="{{photo.image.url}}" width="50">
+    <img src="{photo.image.url}" style="width:100px; height:100px" />
+    <img src="{post.image.url}" />
+    <tr>
+        <td> {{ photo.image }} </td>
+    </tr>
+
     {% endfor %}
 
     
