@@ -49,22 +49,18 @@ def main(request):
         user.image = img
         user.save()
         
-        return redirect('/test')
-        '''
-        p = User()
-        p = request.FILES.get('image')
-        p.save()
-        '''
+        return redirect('/fileUpload')
+      
 
     else:
         fileuploadForm = FileUploadForm
         context = {
             'fileuploadForm': fileuploadForm,
         }
-        return render(request, 'main.html', context)
+        return render(request, 'fileuploadForm.html', context)
      
 
 
-def test(request):
+def fileUpload(request):
     if request.method == "GET":
-        return render(request, 'test.html')
+        return render(request, 'fileUpload.html')

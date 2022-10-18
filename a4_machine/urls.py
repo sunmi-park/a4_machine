@@ -16,14 +16,13 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from . import views
-from django.conf.urls.static import static
-from django.conf import settings
+
 
 app_name = 'a4_machine'
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('user.urls')),
-    path('main/', views.main, name='main'),
+   
 
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+]
