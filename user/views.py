@@ -63,6 +63,7 @@ def fileupload(request):
         }
         return render(request, 'user/fileupload.html', imgs)
 
+
 def home(request):
     user = request.user.is_authenticated
     if user:
