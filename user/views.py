@@ -1,6 +1,6 @@
 from django.http import HttpResponse
 from django.shortcuts import redirect, render
-from .models import User
+from .models import User, Image
 from django.contrib.auth import authenticate, login as loginsession
 from .forms import FileUploadForm
 from a4_machine.machine import find_something
@@ -38,27 +38,34 @@ def login(request):
 
 def main(request):
     if request.method == 'POST':
-        user = request.user
-        img = request.FILES.get('image')
-        user.image = img
-        user.save()
+        username = request.user
+        img_file = request.FILES.get('image')
+        img = Image()
+        img.username = username
+        img.image = img_file
+        img.user = username
+        img.save()
+        img_name = img.image.url
+        find_something(request, img_name)
+
         return redirect('/fileupload')
     else:
         fileuploadForm = FileUploadForm
         context = {
             'fileuploadForm': fileuploadForm,
         }
-        print(request)
         return render(request, 'user/main.html', context)
 
 def fileupload(request):
     if request.method == "GET":
-        print(request)
-        return render(request, 'user/fileupload.html')
+        imgs = {
+            'result.png'
+        }
+        return render(request, 'user/fileupload.html', imgs'imgs)
 
 def home(request):
     user = request.user.is_authenticated
     if user:
-        return render(request, 'user/main.html')
+        return redirect('/main')
     else:
         return redirect('/login')
