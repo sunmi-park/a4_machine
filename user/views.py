@@ -60,25 +60,6 @@ def main(request):
         }
         return render(request, 'fileUpload.html', context)
 
-        '''
-        return redirect('/fileupload/')
-        '''
-        
-
-
-        '''    #User모델
-        user = request.user 
-        img = request.FILES.get('image')
-        
-        user.image = img
-        user.save()'''
-
-
-        '''틀린 코드
-        model = torch.hub.load('ultralytics/yolov5', 'yolov5s', pretrained=True)
-        results = model(img) # image_rgb
-        results.render() # save()'''   
-     
 
 def fileupload(request):
     if request.method == "GET":
