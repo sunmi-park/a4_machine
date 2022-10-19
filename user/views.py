@@ -59,9 +59,9 @@ def main(request):
 def fileupload(request):
     if request.method == "GET":
         imgs = {
-            'result.png'
+            'imgs':'result.png'
         }
-        return render(request, 'user/fileupload.html', imgs'imgs)
+        return render(request, 'user/fileupload.html', imgs)
 
 def home(request):
     user = request.user.is_authenticated
