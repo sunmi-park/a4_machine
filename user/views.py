@@ -1,8 +1,10 @@
 from django.http import HttpResponse
 from django.shortcuts import redirect, render
-from .models import User
+from .models import User, ImageModel
 from django.contrib.auth import authenticate, login as loginsession
 from .forms import FileUploadForm
+import torch
+from django.conf import settings
 
 # Create your views here.
 
@@ -40,21 +42,42 @@ def main(request):
         return render(request, 'main.html')
 
     if request.method == 'POST':
+       
+        form = FileUploadForm(request.POST, request.FILES)
+        if form.is_valid(): # 사진 업로드 유효성검사
+            form.save()
+            form.instance.image
+            
+
+            model = torch.hub.load('ultralytics/yolov5', 'yolov5s', pretrained=True) # yolo 모델
+            results = model([settings.BASE_DIR / form.instance.image.url[1:]]) 
+            results.save(model, 'media', True) # media yolo파일로 덮음
+            
         
-        user = request.user
+        context = {
+            'form': form
+            
+        }
+        return render(request, 'fileUpload.html', context)
+
+        '''
+        return redirect('/fileupload/')
+        '''
+        
+
+
+        '''    #User모델
+        user = request.user 
         img = request.FILES.get('image')
         
         user.image = img
-        user.save()
-        
-        return redirect('/fileupload/')
-    
-    else:
-        fileuploadForm = FileUploadForm
-        context = {
-            'fileuploadForm': fileuploadForm,
-        }
-        return render(request, 'fileuploadForm.html', context)
+        user.save()'''
+
+
+        '''틀린 코드
+        model = torch.hub.load('ultralytics/yolov5', 'yolov5s', pretrained=True)
+        results = model(img) # image_rgb
+        results.render() # save()'''   
      
 
 def fileupload(request):

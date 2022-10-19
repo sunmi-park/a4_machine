@@ -2,7 +2,8 @@ import torch
 import cv2
 
 model = torch.hub.load('ultralytics/yolov5', 'yolov5s', pretrained=True)
-imgs = cv2.imread('a4_machine/img/donut.jpg') # batch of images
+imgs = cv2.imread('media/zidane.jpg') # batch of images
+ # a4_machine/img/donut.jpg
 
 ##cv2의 channel이 BRG로 되어있어 사진이 파란색으로 보임, 그래서 RGB로 바꾸는 작업
 image_rgb = cv2.cvtColor(imgs, cv2.COLOR_BGR2RGB)
