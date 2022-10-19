@@ -5,7 +5,7 @@ from django.contrib.auth.models import AbstractUser
 # Create your models here.
 class User(AbstractUser):
     class Meta:
-        db_table = 'my_user_model'
+        db_table = 'user_user'
 
 class Image(models.Model):
     class Meta:
