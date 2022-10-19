@@ -11,13 +11,10 @@
 <body>
 
     <div class="users_ifm_frame">
-   
-    {% if user.image %}
-    <img src="{{user.image.url}}" >
+    {% if imgs %}
+    <img src= "{{imgs}}" >
     {% endif %}
-  
     </div>
-
 
 </body>
 {% endblock %}
