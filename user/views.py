@@ -1,10 +1,10 @@
-from django.http import HttpResponse
+from django.contrib import auth
 from django.shortcuts import redirect, render
 from .models import User, Image
 from django.contrib.auth import authenticate, login as loginsession
 from .forms import FileUploadForm
 from a4_machine.machine import find_something
-
+import re
 # Create your views here.
 
 def signup(request):
@@ -15,13 +15,18 @@ def signup(request):
         username = request.POST.get('username')
         password = request.POST.get('password')
         passwordcheck = request.POST.get('passwordcheck')
-        if password == passwordcheck:
+        is_email = re.compile(r"^[a-zA-Z]+[!#$%&'*+-/=?^_`(){|}~]*[a-zA-Z0-9]*@[\w]+\.[a-zA-Z0-9-]+[.]*[a-zA-Z0-9]+$")
+        if password != passwordcheck:
+            return render(request, 'user/signup.html', {'error': '비밀번호가 맞지 않습니다!'})
+        elif username.replace(' ','') == '':
+            return render(request, 'user/signup.html', {'error': 'username은 공백일 수 없습니다!'})
+        elif is_email.match(email) == False:
+            return render(request, 'user/signup.html', {'error': 'email을 확인해 주세요!'})
+        elif password == passwordcheck:
             User.objects.create_user(username=username, password=password, email=email)
             return redirect('/login/')
-        else:
-            return HttpResponse('비밀번호 틀림')
     else:
-        return HttpResponse('허용되지 않은 메소드입니다.')
+        return render(request, 'user/signup.html', {'error': '아이디와 비밀번호를 확인해 주세요!'})
 
 def login(request):
     if request.method=='GET':
@@ -29,12 +34,13 @@ def login(request):
     elif request.method =='POST':
         username = request.POST.get('username')
         password = request.POST.get('password')
-        user = authenticate(request, username=username, password=password)
+        user = auth.authenticate(request, username=username, password=password)
+        print(username, password)
         if user is not None:
             loginsession(request, user)
             return redirect('/')
         else:
-            return HttpResponse('로그인 실패')
+            return render(request, 'user/login.html', {'error': '아이디와 비밀번호를 확인해 주세요!'})
 
 def main(request):
     if request.method == 'POST':
@@ -58,10 +64,7 @@ def main(request):
 
 def fileupload(request):
     if request.method == "GET":
-        imgs = {
-            'imgs':'result.png'
-        }
-        return render(request, 'user/fileupload.html', imgs)
+        return render(request, 'user/fileupload.html')
 
 
 def home(request):

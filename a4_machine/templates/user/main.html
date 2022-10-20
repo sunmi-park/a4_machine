@@ -13,28 +13,95 @@ integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxV
 crossorigin="anonymous"></script>
 
 <title>132</title>
-</head>
+<style>
+  .img-container {
+    margin: 50px auto;
+    width: 700px;
+    height: 700px;
+    border: 1px solid black;
+    display: flex;
+    flex-direction: column;
+}
+.img-display {
+    margin: auto;
+    width: 500px;
+    height: 500px;
+    background: green;
+}
 
+.filebox .upload-name {
+  display: inline-block;
+  height: 40px;
+  padding: 0 10px;
+  vertical-align: middle;
+  border: 1px solid #dddddd;
+  width: 78%;
+  color: #999999;
+}
+.filebox label {
+  display: inline-block;
+  padding: 10px 20px;
+  color: #fff;
+  vertical-align: middle;
+  background-color: #999999;
+  cursor: pointer;
+  height: 40px;
+  margin-left: 10px;
+}
+.filebox input[type="file"] {
+  position: absolute;
+  width: 0;
+  height: 0;
+  padding: 0;
+  overflow: hidden;
+  border: 0;
+}
+
+</style>
+
+</head>
 <body>
   <!-- 네비게이션 바-->
   <nav class="navbar bg-light">
     <div class="container-fluid">
-      <a class="navbar-brand">로고</a>
-      <form class="d-flex" role="search">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success" type="submit">Search</button>
+      <a class="navbar-brand"><img src="https://ifh.cc/g/PKRPsx.png" width="50px" height="50px"></a>
+      <form class="d-flex" role="button">
+        <button class="btn btn-outline-primary" type="submit">Logout</button>
       </form>
     </div>
   </nav>
 
-  <!-- 이미지 업로드 -->
-  <form method="POST" action="{% url 'user:main' %}" enctype="multipart/form-data">
-    {% csrf_token %}
-    <input type="file" name="image" multiple>
-    <input type='submit' value="작성하기">
-  </form>
+  <div class="image_container">
+    <div id='previewer' class="img-display">
+    </div>
+      <!-- 이미지 업로드 -->
+    <form method="POST" action="{% url 'user:main' %}" enctype="multipart/form-data">
+      {% csrf_token %}
+      <input type="file" name="image" multiple>
+      <img id="preview"/>
+      <input type='submit' value="작성하기">
+    </form>
+    <div class="filebox">
+      <form method="POST" action="{% url 'user:main' %}" enctype="multipart/form-data">
+      <input type='file' name='image' class="upload-name" accept="image/*" onchange="setThumbnail(event)" value="첨부파일" placeholder="첨부파일" multiple>
+      <label type='submit' for="file">파일찾기</label>
+      <input type="file" id="file">
+    </div>
+  </div>
 
 
+  <<script>
+    function setThumbnail(event) {
+      var reader = new FileReader();
+
+      reader.onload = function(event) {
+        var img = document.createElement("img");
+        img.setAttribute("src", event.target.result);
+        document.querySelector("div#image_container").appendChild(img);
+      };
+
+      reader.readAsDataURL(event.target.files[0]);
+    }
+  </script>
 </body>
-
 </html>
