@@ -1,12 +1,12 @@
 # 내일배움캠프 Team A4용지 
-# 머신러닝프로젝트 저장소
+# 👋머신러닝프로젝트 저장소👋
 <img src="https://ifh.cc/g/PKRPsx.png" width="300px" height="300px">
 
 * 팀 구성원
-  * 김남훈 [블로그 링크] (https://hunss.tistory.com/)
-  * 김명현 [블로그 링크] (https://z9x80123.tistory.com/)
-  * 김준식 [블로그 링크] (https://junspythonbackend.tistory.com/)
-  * 박선미 [블로그 링크] (https://mmsp31.tistory.com/)
+  * 김남훈 [블로그 링크](https://hunss.tistory.com/)
+  * 김명현 [블로그 링크](https://z9x80123.tistory.com/)
+  * 김준식 [블로그 링크](https://junspythonbackend.tistory.com/)
+  * 박선미 [블로그 링크](https://mmsp31.tistory.com/)
 
 # 프로젝트 설명
 
