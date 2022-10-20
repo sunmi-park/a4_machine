@@ -32,6 +32,15 @@ ex 이미지를 올리면 객체인식해서 포스팅하는 서비스다.
 
 
 
+
+
+
+
+
+
+
+
+
 # 기술스택
 ### 백엔드
 <img alt="Python" src ="https://img.shields.io/badge/Python-3776AB.svg?&style=for-the-badge&logo=Python&logoColor=white"/> <img src="https://img.shields.io/badge/Django-092E20?style=for-the-badge&logo=Django&logoColor=white">
