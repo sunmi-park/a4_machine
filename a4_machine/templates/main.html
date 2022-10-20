@@ -21,16 +21,21 @@ crossorigin="anonymous"></script>
     border: 1px solid black;
     display: flex;
     flex-direction: column;
+    border:blue solid 2px;
 }
 .img-display {
     margin: auto;
-    width: 500px;
-    height: 500px;
-    background: green;
+    max-width: 500px;
+    height: auto;
     display: flex;
     overflow: hidden;
     object-fit: scale-down;
+    display: block;
+    border:red solid 2px;
+    
 }
+
+
 </style>
 </head>
 <body>
@@ -43,6 +48,7 @@ crossorigin="anonymous"></script>
       </form>
     </div>
   </nav>
+  
   <div class="img-container">
     <div class="img-display" id="image_container">
     </div>
@@ -50,22 +56,30 @@ crossorigin="anonymous"></script>
     <form method="POST" action="{% url 'user:main' %}" enctype="multipart/form-data">
       {% csrf_token %}
       <input type="file" id="image" accept="image/*" onchange="setThumbnail(event);"/>
-      <img id="preview"/>
+      <img id="preview" />
       <input type='submit' value="작성하기">
     </form>
   </div>
+
 <script>
+
   function setThumbnail(event) {
     var reader = new FileReader();
 
     reader.onload = function(event) {
       var img = document.createElement("img");
       img.setAttribute("src", event.target.result);
+      img.style.border= 'green solid 2px';
+      img.style.width='100%';
+      img.style.height='100%';
+
       document.querySelector("div#image_container").appendChild(img);
     };
 
     reader.readAsDataURL(event.target.files[0]);
   }
+  
+
 </script>
 </body>
 </html>
