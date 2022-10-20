@@ -14,14 +14,30 @@
 
   <title>132</title>
   <style>
+    body{
+      font-family: 'Noto Sans KR', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background: url("https://www.spcmagazine.com/wp-content/uploads/2022/06/spc_%EB%8D%98%ED%82%A8-%EB%A7%9D%EC%9B%90%EC%A0%90_10002.jpg") no-repeat center;
+      background-size: cover;
+  }
+  body::before {
+      content: "";
+      position: absolute; z-index: l;
+      top: 0; right: 0; bottom: 0; left: 0;
+      background-color: rgba(0,0,0,.6);
+  }
     .img-container {
       margin: 50px auto;
       width: 700px;
       height: 700px;
       display: flex;
       flex-direction: column;
-      background-color: white;
+      background-color: rgba(216, 206, 206, 0.178);
       border-radius: 10%;
+      z-index: 5;
     }
 
     .img-display {
@@ -110,17 +126,51 @@
       margin-right: 0;
 
     }
+    .navbar {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      opacity:0.7;
+
+      }
+      .w-btn-skin {
+        background-color: #f8e6e0;
+        color: #6e6e6e;
+      }
+      .w-btn-skin-outline {
+        border: 3px solid #f8e6e0;
+        color: #6e6e6e;
+      }
+      .w-btn-skin-outline:hover {
+        background-color: #f8e6e0;
+        color: #6e6e6e;
+    }
+      .logout_button{
+        background-color: #f8e6e0;
+        color: #6e6e6e;
+        border: 3px solid #f8e6e0;
+        color: #6e6e6e;
+        border-radius: 15px;
+      }
+      .logout_button:hover{
+        background-color: #f8e6e0;
+        color: #6e6e6e;
+        letter-spacing: 2px;
+        transform: scale(1.2);
+        cursor: pointer;
+
+      }
   </style>
 
 </head>
 
 <body>
   <!-- 네비게이션 바-->
-  <nav class="navbar bg-light">
+  <nav class="navbar bg-light" name="navbar">
     <div class="container-fluid">
       <a class="navbar-brand"><img src="https://ifh.cc/g/PKRPsx.png" width="50px" height="50px"></a>
       <form class="d-flex" role="button" action="{% url 'user:logout' %}" method="GET">
-        <button class="btn btn-outline-primary" type="submit" onclick="location.href='/login/';">Logout</button>
+        <button class="logout_button" type="submit" onclick="location.href='/login/';">Logout</button>
       </form>
     </div>
   </nav>
@@ -133,14 +183,14 @@
       <!-- 업로드 버튼-->
       <div class="asd">
         <label for="input-file">
-          <div class="w-btn w-btn-blue"> Upload</div>
+          <div class="w-btn w-btn-skin"> Upload</div>
         </label>
         <input type="file" id="input-file" name='image' accept="image/*" onchange="setThumbnail(event);"
           class="input_type_file" />
         <img id="preview" />
         <!-- 제출하기 버튼-->
         <div class="submit_place">
-          <button type='submit' class="w-btn w-btn-blue">Submit</button>
+          <button type='submit' class="w-btn w-btn-skin">Submit</button>
         </div>
       </div>
     </form>
