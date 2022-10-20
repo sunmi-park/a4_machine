@@ -3,12 +3,10 @@ from django.shortcuts import redirect, render
 from .models import User, ImageModel
 from django.contrib.auth import authenticate, login as loginsession
 from .forms import FileUploadForm
-from a4_machine.machine import find_something
+from django.contrib import auth
+from django.contrib.auth import logout
 
 
-from .models import User, ImageModel
-from django.contrib.auth import authenticate, login as loginsession
-from .forms import FileUploadForm
 import torch
 from django.conf import settings
 
@@ -16,7 +14,7 @@ from django.conf import settings
 
 def signup(request):
     if request.method=='GET':
-        return render(request, 'user/signup.html')
+        return render(request, 'signup.html')
     elif request.method=='POST':
         email = request.POST.get('email')
         username = request.POST.get('username')
@@ -32,7 +30,7 @@ def signup(request):
 
 def login(request):
     if request.method=='GET':
-        return render(request, 'user/login.html')
+        return render(request, 'login.html')
     elif request.method =='POST':
         username = request.POST.get('username')
         password = request.POST.get('password')
@@ -43,8 +41,15 @@ def login(request):
         else:
             return HttpResponse('로그인 실패')
 
+def fileupload(request):
+    if request.method == "GET":
+        return render(request, 'fileupload.html')
+
 def main(request):
-    if request.method == 'POST':
+    if request.method =='GET':
+        return render(request, 'main.html')
+
+    elif request.method == 'POST':
        
         form = FileUploadForm(request.POST, request.FILES)
         if form.is_valid(): # 사진 업로드 유효성검사
@@ -61,12 +66,7 @@ def main(request):
             'form': form
             
         }
-        return render(request, 'fileUpload.html', context)
-
-
-def fileupload(request):
-    if request.method == "GET":
-        return render(request, 'fileupload.html')
+        return render(request, 'fileupload.html', context)
 
 
 def home(request):
@@ -75,3 +75,9 @@ def home(request):
         return redirect('/main')
     else:
         return redirect('/login')
+
+
+def logout(request):
+    auth.logout(request)
+    return redirect('/')
+    
