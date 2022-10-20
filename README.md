@@ -1,5 +1,5 @@
 # 내일배움캠프 Team A4용지 
-# 👋머신러닝프로젝트 저장소👋
+# 머신러닝프로젝트 저장소👋
 <img src="https://ifh.cc/g/PKRPsx.png" width="300px" height="300px">
 
 * 팀 구성원
