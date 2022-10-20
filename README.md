@@ -1,6 +1,6 @@
 # 내일배움캠프 Team A4용지 
 # 머신러닝프로젝트 저장소
-
+<img src="https://ifh.cc/g/PKRPsx.png" width="300px" height="300px">
 
 * 팀 구성원
   * 김남훈 [블로그 링크] (https://hunss.tistory.com/)
@@ -20,14 +20,23 @@
 
 # 기술스택
 ### 백엔드
-파이썬, django
+<img alt="Python" src ="https://img.shields.io/badge/Python-3776AB.svg?&style=for-the-badge&logo=Python&logoColor=white"/>, 
+<img src="https://img.shields.io/badge/Django-092E20?style=for-the-badge&logo=Django&logoColor=white">
 
 ### 프론트엔드
-javascript html css
+<img alt="JavaScript" src ="https://img.shields.io/badge/JavaScriipt-F7DF1E.svg?&style=for-the-badge&logo=JavaScript&logoColor=black"/> <img alt="Html" src ="https://img.shields.io/badge/HTML5-E34F26.svg?&style=for-the-badge&logo=HTML5&logoColor=white"/> <img alt="Css" src ="https://img.shields.io/badge/CSS3-1572B6.svg?&style=for-the-badge&logo=CSS3&logoColor=white"/>
 
 ### 데이터베이스
-dbsplite3
+<img src="https://img.shields.io/badge/SQLite-003B57?style=for-the-badge&logo=SQLite&logoColor=white">
+
 
 ### 머신러닝
 pytorch cv2 yolov5
+
+
+
+
+
+
+
 
