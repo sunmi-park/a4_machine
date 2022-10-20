@@ -23,7 +23,7 @@ def signup(request):
             return render(request, 'signup.html', {'error': '비밀번호가 맞지 않습니다!'})
         elif username.replace(' ','') == '':
             return render(request, 'signup.html', {'error': 'username은 공백일 수 없습니다!'})
-        elif is_email.match(email) == False:
+        elif is_email.match(email) == False:  
             return render(request, 'signup.html', {'error': 'email을 확인해 주세요!'})
         elif password == passwordcheck:
             User.objects.create_user(username=username, password=password, email=email)
@@ -45,27 +45,25 @@ def login(request):
         else:
             return render(request, 'login.html', {'error': '아이디와 비밀번호를 확인해 주세요!'})
 
-def fileupload(request):
-    if request.method == "GET":
-        return render(request, 'fileupload.html')
-
 def main(request):
     if request.method =='GET':
         return render(request, 'main.html')
-    elif request.method == 'POST':
+
+    if request.method == 'POST':
         form = FileUploadForm(request.POST, request.FILES)
         if form.is_valid(): # 사진 업로드 유효성검사
             form.save()
             form.instance.image
+            
             model = torch.hub.load('ultralytics/yolov5', 'yolov5s', pretrained=True) # yolo 모델
             results = model([settings.BASE_DIR / form.instance.image.url[1:]])
             results.save(model, 'media', True) # media yolo파일로 덮음
         context = {
             'form': form
         }
-        return render(request, 'fileupload.html', context)
-
-
+        return render(request, 'yolofile.html', context)
+    
+                
 def home(request):
     user = request.user.is_authenticated
     if user:
