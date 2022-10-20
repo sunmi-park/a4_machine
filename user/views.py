@@ -45,10 +45,6 @@ def login(request):
         else:
             return render(request, 'login.html', {'error': '아이디와 비밀번호를 확인해 주세요!'})
 
-def fileupload(request):
-    if request.method == "GET":
-        return render(request, 'fileupload.html')
-
 def main(request):
     if request.method =='GET':
         return render(request, 'main.html')
@@ -66,8 +62,9 @@ def main(request):
         context = {
             'form': form
         }
-        return render(request, 'fileupload.html', context)
-
+        return render(request, 'yolofile.html', context)
+    
+                
 def home(request):
     user = request.user.is_authenticated
     if user:
