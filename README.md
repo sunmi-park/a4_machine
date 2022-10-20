@@ -3,17 +3,18 @@
 <img src="https://ifh.cc/g/PKRPsx.png" width="300px" height="300px">
 
 * 팀 구성원
-  * **김남훈**  역할 뭐시기[블로그 링크](https://hunss.tistory.com/)
+  * **김남훈**  역할 뭐시기 [블로그 링크](https://hunss.tistory.com/)
   * **김명현** [블로그 링크](https://z9x80123.tistory.com/)
   * **김준식** [블로그 링크](https://junspythonbackend.tistory.com/)
   * **박선미** [블로그 링크](https://mmsp31.tistory.com/)
 
-# 프로젝트 설명
+# 프로젝트 기능
 
 * 회원가입, 로그인 기능
 * 머신러닝, Django 연동
 * 이미지를 업로드하여, yolov5을 통해 원하는 객체를 분리
 
+# 프로젝트 설명
 
 이 프로젝트가 어떤 서비스인지 << 설명
 
