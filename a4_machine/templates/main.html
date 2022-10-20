@@ -27,6 +27,9 @@ crossorigin="anonymous"></script>
     width: 500px;
     height: 500px;
     background: green;
+    display: flex;
+    overflow: hidden;
+    object-fit: scale-down;
 }
 </style>
 </head>
@@ -41,29 +44,28 @@ crossorigin="anonymous"></script>
     </div>
   </nav>
   <div class="img-container">
-    <div class="img-display">
+    <div class="img-display" id="image_container">
     </div>
       <!-- 이미지 업로드 -->
     <form method="POST" action="{% url 'user:main' %}" enctype="multipart/form-data">
       {% csrf_token %}
-      <input type="file" onchange="readURL(this);" name="image" multiple>
+      <input type="file" id="image" accept="image/*" onchange="setThumbnail(event);"/>
       <img id="preview"/>
       <input type='submit' value="작성하기">
     </form>
   </div>
 <script>
-  function readURL(input) {
-    if (input.files && input.files[0]) {
-      var reader = new FileReader();
-      reader.onload = function(e) {
-        document.getElementById('preview').src = e.target.result;
-      };
-      reader.readAsDataURL(input.files[0]);
-    } else {
-      document.getElementById('preview').src = "";
-    }
+  function setThumbnail(event) {
+    var reader = new FileReader();
+
+    reader.onload = function(event) {
+      var img = document.createElement("img");
+      img.setAttribute("src", event.target.result);
+      document.querySelector("div#image_container").appendChild(img);
+    };
+
+    reader.readAsDataURL(event.target.files[0]);
   }
-  
 </script>
 </body>
 </html>
