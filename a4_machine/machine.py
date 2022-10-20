@@ -1,6 +1,6 @@
 import torch
 import cv2
-from user.models import User
+from user.models import User, ImageModel
 
 def find_something(request, img_name):
     model = torch.hub.load('ultralytics/yolov5', 'yolov5s', pretrained=True)

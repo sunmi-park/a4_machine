@@ -1,11 +1,18 @@
 from django.http import HttpResponse
 from django.shortcuts import redirect, render
-from .models import User, Image
+from .models import User, ImageModel
 from django.contrib.auth import authenticate, login as loginsession
 from .forms import FileUploadForm
 from a4_machine.machine import find_something
 
-# Create your views here.
+
+from .models import User, ImageModel
+from django.contrib.auth import authenticate, login as loginsession
+from .forms import FileUploadForm
+import torch
+from django.conf import settings
+
+
 
 def signup(request):
     if request.method=='GET':
@@ -38,30 +45,29 @@ def login(request):
 
 def main(request):
     if request.method == 'POST':
-        username = request.user
-        img_file = request.FILES.get('image')
-        img = Image()
-        img.username = username
-        img.image = img_file
-        img.user = username
-        img.save()
-        img_name = img.image.url
-        find_something(request, img_name)
+       
+        form = FileUploadForm(request.POST, request.FILES)
+        if form.is_valid(): # 사진 업로드 유효성검사
+            form.save()
+            form.instance.image
+            
 
-        return redirect('/fileupload')
-    else:
-        fileuploadForm = FileUploadForm
+            model = torch.hub.load('ultralytics/yolov5', 'yolov5s', pretrained=True) # yolo 모델
+            results = model([settings.BASE_DIR / form.instance.image.url[1:]]) 
+            results.save(model, 'media', True) # media yolo파일로 덮음
+            
+        
         context = {
-            'fileuploadForm': fileuploadForm,
+            'form': form
+            
         }
-        return render(request, 'user/main.html', context)
+        return render(request, 'fileUpload.html', context)
+
 
 def fileupload(request):
     if request.method == "GET":
-        imgs = {
-            'result.png'
-        }
-        return render(request, 'user/fileupload.html', imgs=imgs)
+        return render(request, 'fileupload.html')
+
 
 def home(request):
     user = request.user.is_authenticated
