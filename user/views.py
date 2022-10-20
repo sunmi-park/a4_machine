@@ -7,7 +7,7 @@ from django.contrib import auth
 from django.contrib.auth import logout
 import torch
 from django.conf import settings
-
+import re
 
 
 def signup(request):
