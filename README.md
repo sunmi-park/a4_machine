@@ -3,7 +3,7 @@
 
 
 * 팀 구성원
-  * 김남훈 (https://hunss.tistory.com/)
+  * 김남훈 [블로그 링크] (https://hunss.tistory.com/)
   * 김명현
   * 김준식
   * 박선미
