@@ -3,26 +3,43 @@
 <img src="https://ifh.cc/g/PKRPsx.png" width="300px" height="300px">
 
 * 팀 구성원
-  * **김남훈** 역할 뭐시기 [블로그 링크](https://hunss.tistory.com/)
-  * **김명현** 역할 뭐시기 [블로그 링크](https://z9x80123.tistory.com/)
-  * **김준식** 역할 뭐시기 [블로그 링크](https://junspythonbackend.tistory.com/)
-  * **박선미** 역할 뭐시기 [블로그 링크](https://mmsp31.tistory.com/)
+  * **김남훈** 프론트/백엔드 [블로그 링크](https://hunss.tistory.com/)
+  * **김명현** 백엔드/머신러닝 [블로그 링크](https://z9x80123.tistory.com/)
+  * **김준식** 프론트/백엔드 [블로그 링크](https://junspythonbackend.tistory.com/)
+  * **박선미** 백엔드/머신러닝 [블로그 링크](https://mmsp31.tistory.com/)
 
 # 프로젝트 기능
 
-* 회원가입, 로그인 기능 ( 자세히 어떤 기능이 있는지 예외처리한거있으면 추가 )
-* 머신러닝, Django 연동
-* 이미지를 업로드하여, yolov5을 통해 원하는 객체를 분리
+
+
+* 회원가입 -> 로그인-> 사진업로드 : 자동으로 사물인식 된 사진업로드 해줌 -> 사물인식된 사진 ( 자세히 어떤 기능이 있는지 예외처리한거있으면 추가 )
+* 머신러닝, Django 연동 : 업로드 된 사진의 주소를 YOLO 인식 사진으로 바꿔줌
+
 
 좀 상세히
 
 # 프로젝트 설명
 
+* 이미지를 업로드하여, yolov5을 통해 원하는 객체를 분리 해주는 서비스
+
 ex 이미지를 올리면 객체인식해서 포스팅하는 서비스다.
 코드를 몰라도 알아먹게
+
 # 결과 이미지
 
-ㅁ우ㅐㅑㅁㅈㅇㅁㅈ
+<img src="https://user-images.githubusercontent.com/113074921/196870904-ca44f061-c572-47ec-895a-fa5955d83d53.png" width="300px" height="300px">
+<img src="https://sitem.ssgcdn.com/63/60/92/item/2097000926063_i1_1200.jpg" width="300px" height="300px>
+
+
+
+
+
+
+
+
+
+
+
 
 # 기술스택
 ### 백엔드
