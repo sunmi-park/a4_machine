@@ -3,7 +3,6 @@ from user import views
 from django.conf.urls.static import static
 from django.conf import settings
 
-
 app_name = 'user'
 
 urlpatterns = [
@@ -11,8 +10,8 @@ urlpatterns = [
     path('login/', views.login, name='login'),
     path('main/', views.main, name='main'),
     path('fileupload/', views.fileupload, name='fileupload'),
-    path('fileupload/result.png', views.fileupload, name='fileupload'),
-    path('',views.home)
+    path('',views.home),
+    path('logout/', views.logout, name='logout')
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 

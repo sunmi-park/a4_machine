@@ -6,17 +6,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
-
 {% block content %}
 <body>
 
-    <div class="users_ifm_frame">
-    {% if imgs %}
-    <img src= "result.png" >
+    <div class="users_ifm_frame" >
+    {% if form.instance.image %}
+    <img src="{{form.instance.image.url}}" >
     {% endif %}
     </div>
 
 </body>
 {% endblock %}
-
 </html>
