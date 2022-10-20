@@ -3,10 +3,10 @@
 <img src="https://ifh.cc/g/PKRPsx.png" width="300px" height="300px">
 
 * 팀 구성원
-  * **김남훈**  역할 뭐시기 [블로그 링크](https://hunss.tistory.com/)
-  * **김명현** [블로그 링크](https://z9x80123.tistory.com/)
-  * **김준식** [블로그 링크](https://junspythonbackend.tistory.com/)
-  * **박선미** [블로그 링크](https://mmsp31.tistory.com/)
+  * **김남훈** 역할 뭐시기 [블로그 링크](https://hunss.tistory.com/)
+  * **김명현** 역할 뭐시기 [블로그 링크](https://z9x80123.tistory.com/)
+  * **김준식** 역할 뭐시기 [블로그 링크](https://junspythonbackend.tistory.com/)
+  * **박선미** 역할 뭐시기 [블로그 링크](https://mmsp31.tistory.com/)
 
 # 프로젝트 기능
 
