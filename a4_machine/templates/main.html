@@ -104,6 +104,7 @@
       margin-left: 50px;
       margin-bottom: 50px;
     }
+
     .w-btn:hover {
       letter-spacing: 2px;
       transform: scale(1.2);
@@ -159,13 +160,13 @@
       cursor: pointer;
 
     }
+
     .navbar {
       position: fixed;
       top: 0;
       width: 100%;
       background-color: transparent;
     }
-
   </style>
 
 </head>
@@ -174,7 +175,8 @@
   <!-- 네비게이션 바-->
   <nav class="navbar" name="navbar">
     <div class="container-fluid">
-      <a href="/main/" class="navbar-brand"><img src="https://ifh.cc/g/PKRPsx.png" width="50px" height="50px" style="border-radius:15%"></a>
+      <a href="/main/" class="navbar-brand"><img src="https://ifh.cc/g/PKRPsx.png" width="50px" height="50px"
+          style="border-radius:15%"></a>
       <form class="d-flex" role="button" action="{% url 'user:logout' %}" method="GET">
         <button class="logout_button" type="submit" onclick="location.href='/login/';">Logout</button>
       </form>
@@ -185,6 +187,7 @@
   <div class="img-container">
     <div class="img-display" id="image_container">
     </div>
+
     <form method="POST" action="{% url 'user:main' %}" enctype="multipart/form-data">
       {% csrf_token %}
       <!-- 업로드 버튼-->
@@ -199,10 +202,15 @@
         <div class="submit_place">
           <button type='submit' class="w-btn w-btn-skin">Submit</button>
         </div>
-      </div>
     </form>
 
   </div>
+  <div class="right-profile">
+    <div class="right-wrap">
+      
+
+    </div>
+
   </div>
 
   <script>
