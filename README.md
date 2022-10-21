@@ -44,6 +44,19 @@
 
 * 이미지를 업로드하여, yolov5을 통해 원하는 객체를 분리 해주는 서비스
 
+# 와이어프레임
+
+<img src="https://user-images.githubusercontent.com/113074921/197087985-6c4ff0cd-9308-44d5-9649-9e39f3444a3e.png" width="600px" height="300px">
+<img src="https://user-images.githubusercontent.com/113074921/197088030-24bfc949-c195-454f-843d-f8b5dce68dcd.png" width="600px" height="300px">
+
+# AIP설계
+
+<img src="https://user-images.githubusercontent.com/113074921/197088740-00a8e9a9-2d81-4d35-9ea4-142d465232e1.png" width="600px" height="300px">
+
+
+# DB 설계
+
+<img src="https://user-images.githubusercontent.com/113074921/197089006-7a923bdd-6237-4a95-9cef-cb4ff17adcf1.png" width="600px" height="300px">
 
 # 결과 이미지
 <img src="https://sitem.ssgcdn.com/63/60/92/item/2097000926063_i1_1200.jpg" width="300px" height="300px">
